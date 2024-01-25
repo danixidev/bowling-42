@@ -8,10 +8,10 @@ let roundScore: [number, number, number] = [0, 0, 0];
 let scores = new Map<number, [number, number, number]>(); // roundScore
 interface Round {
   index: number,
-  first: number,
-  second: number,
-  third: number,
-  total: number
+  first: string,
+  second: string,
+  third: string,
+  total: string
 }
 
 interface Player {
