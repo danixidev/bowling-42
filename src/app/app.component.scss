@@ -1,0 +1,145 @@
+* {
+    color: white;
+    text-align: center;
+    font-family: Montserrat, 'sans-serif';
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#board {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.center-vh {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.round-numbers {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+
+    .empty,
+    .round-number {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: center;
+        height: 30px;
+    }
+
+    .empty {
+        width: 60px;
+    }
+
+    .round-number {
+        width: 70px;
+        border-right: 1px solid #FFF;
+        border-bottom: 1px solid #FFF;
+        background: #127BC6;
+    }
+
+    .round-number.last {
+        width: 105px;
+        border-right: 0;
+    }
+}
+
+.player-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+
+    .player-image {
+        width: 60px;
+        height: 60px;
+        background: rgba(0, 178, 255, 0.60);
+        backdrop-filter: blur(3.5px);
+    }
+
+    .player-rounds {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+
+        .player-round {
+            width: 70px;
+            height: 60px;
+            border-right: 1px solid #FFF;
+            border-bottom: 1px solid #FFF;
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(2px);
+        }
+
+        .player-round.last {
+            width: 105px;
+            border-right: 0;
+        }
+    }
+}
+
+.player-round {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .first {
+        width: 50%;
+        height: 50%;
+    }
+
+    .second {
+        width: calc(50% - 1px);
+        height: 50%;
+        border-bottom: 1px solid #FFF;
+        border-left: 1px solid #FFF;
+    }
+
+    .total {
+        width: 100%;
+        height: 50%;
+    }
+}
+
+.player-round.last {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .first {
+        width: calc(100% / 3);
+        height: 50%;
+    }
+
+    .second {
+        width: calc((100% / 3) - 1px);
+        height: 50%;
+        border-bottom: 1px solid #FFF;
+        border-left: 1px solid #FFF;
+    }
+
+    .third {
+        width: calc((100% / 3) - 1px);
+        height: 50%;
+        border-bottom: 1px solid #FFF;
+        border-left: 1px solid #FFF;
+    }
+
+    .total {
+        width: 100%;
+        height: 50%;
+    }
+}

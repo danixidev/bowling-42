@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
@@ -5,11 +6,30 @@ let round = 0
 let totalScore = 0;
 let roundScore: [number, number, number] = [0, 0, 0];
 let scores = new Map<number, [number, number, number]>(); // roundScore
+interface Round {
+  index: number,
+  first: number,
+  second: number,
+  third: number,
+  total: number
+}
+
+interface Player {
+  name: string,
+  color: string,
+  rounds: Round[],
+  last_score: number
+}
+interface Game {
+  round: number,
+  totalScore: number,
+  players: Player[]
+}
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
