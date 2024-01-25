@@ -37,7 +37,10 @@ export class AppComponent {
   title = 'bowling-42';
 
   totalScore = 0;
-  result = lanzarBola(Math.floor(Math.random() * 10)); // INPUT 
+  rondas: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+
+  mostrarValores: Round[] = []
+  //result = lanzarBola(Math.floor(Math.random() * 10)); // INPUT 
 }
 
 function lanzarBola(numBolos) {
@@ -46,11 +49,11 @@ function lanzarBola(numBolos) {
     roundScore[0] = 10;
     roundScore[1] = 0;
     scores.set(round, [roundScore[0], roundScore[1], 0]);
-    
+
     // SECCION CRITICA
     // ACTUALIZAR TOTAL SCORE
-    
-    
+
+
     console.log("Pleno: " + 10);
   } else {
     roundScore[0] = numBolos;
@@ -63,7 +66,7 @@ function lanzarBola(numBolos) {
 
 
     scores.set(round, [roundScore[0], roundScore[1], 0])
-    console.log("Semipleno: " );
+    console.log("Semipleno: ");
   }
 
 
@@ -86,7 +89,7 @@ function actualizarPuntaje() {
     if (round > 0) {
       if (scores[1].get(round) == 10) {
         totalScore += 10;
-        if (scores[2].get(round) == 10) {  
+        if (scores[2].get(round) == 10) {
           totalScore += 10;
         } else {
           totalScore += scores[2].get(round);
@@ -95,5 +98,5 @@ function actualizarPuntaje() {
     } else {
       totalScore += scores[1].get(round) + scores[2].get(round);
     }
-  } 
+  }
 }
