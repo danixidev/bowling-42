@@ -63,6 +63,10 @@
     justify-content: flex-start;
 
     .player-image {
+        img {
+            width: 100%;
+        }
+
         width: 60px;
         height: 60px;
         background: rgba(0, 178, 255, 0.60);

@@ -9,10 +9,10 @@ let scores = new Map<number, [number, number, number]>(); // roundScore
 
 interface Round {
   index: number,
-  first: number,
-  second: number,
-  third: number,
-  total: number
+  first: string,
+  second: string,
+  third: string,
+  total: string
 }
 
 interface Player {
@@ -38,7 +38,10 @@ export class AppComponent {
   title = 'bowling-42';
 
   totalScore = 0;
-  result = lanzarBola(Math.floor(Math.random() * 10)); // INPUT 
+  rondas: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+
+  mostrarValores: Round[] = []
+  //result = lanzarBola(Math.floor(Math.random() * 10)); // INPUT 
 }
 
 function lanzarBola(numBolos: number) {
@@ -48,15 +51,15 @@ function lanzarBola(numBolos: number) {
     roundScore[1] = 0;
     scores.set(round, [roundScore[0], roundScore[1], 0]);
     totalScore += 10;
-    
-    
+  
+
     console.log("Pleno: " + 10);
   } else {
     roundScore[0] = numBolos;
     lanzarBola2(0); // INPUT  
     
     scores.set(round, [roundScore[0], roundScore[1], 0])
-    console.log("Semipleno: " );
+    console.log("Semipleno: ");
   }
   
   
@@ -96,7 +99,6 @@ function actualizarPuntaje() {
       i -= 1;
   }
 }
-
 
 
 
