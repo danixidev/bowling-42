@@ -20,6 +20,13 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('bowling-42');
   });
 
+  it('actualizar puntaje', () => { 
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.round = 0;
+    fixture.lanzarBola(6);
+    const func = fixture.actualizarPuntaje();
+    expect(func).toequal(6)
+
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();

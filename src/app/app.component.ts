@@ -6,6 +6,7 @@ let round = 0
 let totalScore = 0;
 let roundScore: [number, number, number] = [0, 0, 0];
 let scores = new Map<number, [number, number, number]>(); // roundScore
+
 interface Round {
   index: number,
   first: number,
@@ -40,60 +41,62 @@ export class AppComponent {
   result = lanzarBola(Math.floor(Math.random() * 10)); // INPUT 
 }
 
-function lanzarBola(numBolos) {
+function lanzarBola(numBolos: number) {
 
   if (numBolos == 10) { // pleno
     roundScore[0] = 10;
     roundScore[1] = 0;
     scores.set(round, [roundScore[0], roundScore[1], 0]);
-    
-    // SECCION CRITICA
-    // ACTUALIZAR TOTAL SCORE
+    totalScore += 10;
     
     
     console.log("Pleno: " + 10);
   } else {
     roundScore[0] = numBolos;
-    lanzarBola2(Math.floor(Math.random() * (10 - numBolos))); // INPUT
-
-
-    // SECCION CRITICA
-    // ACTUALIZAR TOTAL SCORE
-    // actulizarPuntaje()
-
-
+    lanzarBola2(0); // INPUT  
+    
     scores.set(round, [roundScore[0], roundScore[1], 0])
     console.log("Semipleno: " );
   }
-
-
+  
+  
   round++;
   return totalScore;
-
+  
 }
 
 
-function lanzarBola2(numBolos) {
+function lanzarBola2(numBolos: number) {
   roundScore[1] = numBolos;
   scores.set(round, [roundScore[0], roundScore[1], 0])
+  // SECCION CRITICA
+  // ACTUALIZAR TOTAL SCORE
+  // actulizarPuntaje()
 }
-
-
 
 function actualizarPuntaje() {
-  if (scores[0].get(round) == 10) { //PLENO 
-    totalScore += 10;
-    if (round > 0) {
-      if (scores[1].get(round) == 10) {
-        totalScore += 10;
-        if (scores[2].get(round) == 10) {  
-          totalScore += 10;
-        } else {
-          totalScore += scores[2].get(round);
-        }
+  let i :number = round - 1;
+  while (i >= 0) {
+      if (scores[0].get(round) === 10) {
+          if (i + 2 < round) {
+              totalScore += scores[0].get(i + 1) + scores[1].get(i + 1);
+          } else {
+              break;
+          }
+      } else if (i > 0 && scores[0].get(i) + scores[1].get(i) === 10) {
+          if (i + 1 < round) {
+            totalScore += scores[1].get(i - 1) + scores[0].get(i + 1);  
+            i -= 1;
+          } else {
+              break;
+          }
+      } else {
+          totalScore += scores[0].get(i) + scores[1].get(i);
       }
-    } else {
-      totalScore += scores[1].get(round) + scores[2].get(round);
-    }
-  } 
+      i -= 1;
+  }
 }
+
+
+
+
